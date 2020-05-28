@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<title> Магазин </title>
+		<link rel="shortcut icon" href="/teleph.ico" type="image/x-icon">
+		<style>
+			body {
+				height: 100%;
+				background: url(fon2.jpg);
+				background-size: cover;
+				background-attachment: fixed;
+			}
+			div {
+				float:left;
+				position: relative;
+				left: 50px;
+				bottom: 400px;
+				top: 70px;
+			}
+			#zatemnenie {
+				background: rgba(100, 100, 100, 0.4);
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			#zatemnenie:target {display: block;}
+			#okno {
+				width: 300px;
+				height: 400px;
+				text-align: center;
+				padding: 15px;
+				position: relative;
+				border-radius: 10px;
+				color: #ffffff;
+				background: rgba(113, 113, 113, 0.7);
+				left: 570px;
+				bottom: 100px;
+				top: 120px;
+			}
+			#pos_elem {
+				top: 40px;				
+				left: 65px;
+			}
+			#pos_elem2 {
+				left: 190px;
+				top: -380px;
+				width: 45px;
+				height: 15px;
+				/*display: inline-block;*/
+				border: 2px solid #0000cc;
+				color: #0000cc;
+				padding: 2 12px;
+				text-decoration: none;
+				border-radius: 10px;
+				background: #f2f2f2;
+				font-size: 9pt;
+				cursor: pointer;
+			}
+			.style_edit {
+				width: 250px;
+				height: 30px;
+				border-radius: 40px;
+				font-size: 20px;
+			}
+			.style_edit:hover{background: #e6e6ff;}
+			.style_button {
+				width: 70px;
+				height: 30px;
+				border-radius: 40px;
+				font-size: 15px;
+			}
+			.style_button:hover{background: #e6e6ff;}			
+			.Reg {
+				width: 210px;
+				height: 25px;
+				display: inline-block;
+				border: 0px solid #0000cc;
+				color: #0000cc;
+				padding: 2 12px;
+				text-decoration: none;
+				border-radius: 40px;
+				background: #f2f2f2;
+				font-size: 15pt;
+				cursor: pointer;
+				margin: auto;
+			}
+			.Reg:hover {background: #e6e6ff;}
+		</style>
+		<script>
+			function f(){
+				var i = document.getElementById("forms");
+				var i1 = document.getElementById("user_name1");
+				var i2 = document.getElementById("user_password1");
+				if((i1.value == "Beslan") && (i2.value == "170898")) i.action = "admin_page.php";
+				else i.action = "Used.php";
+			}
+			function key_prov(){
+				var i1 = document.getElementById("name_user1");
+				if((event.keyCode < 48) || (event.keyCode > 57))
+					if((event.keyCode < 65) || (event.keyCode > 90))
+					 	if((event.keyCode < 97) || (event.keyCode > 122))
+							if ((event.keyCode < 1040) || (event.keyCode > 1103))
+								if((event.keyCode != 95)) event.preventDefault();
+			}
+		</script>
+	</head>
+	<body>	
+			<form method="post" onchange="f()" id="forms">
+				<div> 
+					<font size="4"><p align="center"><b> ИМЯ ПОЛЬЗОВАТЕЛЯ: </b></p></font>
+					<input class="style_edit" type='text' name='user_name' id="user_name1" required="hint_user_name">
+					<font size="4"><p align="center"><b> ПАРОЛЬ : </b></p></font> 
+					<input class="style_edit" type='password' name='user_password' id="user_password1" required="hint_password_name">
+					<p><input type="submit" class="style_button" value=" Зайти "></p>
+					<font size="4"><p><b><a href="#zatemnenie">Зарегистрироваться</a></b></p></font>
+				</div>
+			</form>
+					<div id="zatemnenie"> 
+						<div id="okno">Лист регистрации пользователя<br>
+							<form method="post" action="Register_user.php">
+								<div id="pos_elem">
+									<p><b><i> ИМЯ: </i></b></p>
+									<input type='text' name='name_user' onkeypress="key_prov()" id="name_user1">
+									<p><b><i> ПАРОЛЬ: </i></b></p> 
+									<input type='password' name='password_user'>
+									<p><b><i> ПОДТВЕРДИТЕ ПАРОЛЬ: </i></b></p>
+									<input type='password' name='confirm_password_user'>
+									<p><input type="submit" value=" Зарегистрироваться " class="Reg"></p>
+									<p><input type="reset" value=" Очистить " class="Reg"></p>
+									<p><a href="#"><div id="pos_elem2">Закрыть</div></a>
+								</div>
+							</form>
+						</div>
+					</div>
+	</body>
+</html>
